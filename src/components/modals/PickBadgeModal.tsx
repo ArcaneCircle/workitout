@@ -16,7 +16,7 @@ const rowStyle = {
 };
 
 const imgStyle = {
-  width: "2em",
+  width: "2.8em",
   height: "auto",
 };
 
@@ -42,7 +42,16 @@ export default function PickBadgeModal({ player, ...props }: Props) {
       const opacity = unlocked ? undefined : "50%";
       const cursor = unlocked ? "pointer" : "not-allowed";
       items.push(
-        <div style={{ ...rowStyle, cursor, opacity }} onClick={onClick}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            cursor,
+            opacity,
+          }}
+          onClick={onClick}
+        >
           <img style={{ ...imgStyle, cursor }} src={`./badges/${i}.png`} />
           {unlocked ? (
             <div style={{ cursor }}>#0{n < 10 ? "0" + n : n}</div>
@@ -55,7 +64,7 @@ export default function PickBadgeModal({ player, ...props }: Props) {
                 cursor,
               }}
             >
-              <PixelLockAltSolid style={{ width: "1em" }} />
+              <PixelLockAltSolid style={{ width: "0.7em" }} />
               <span>lvl {i >= 55 ? 100 : Math.floor(i / 5) * 10}</span>
             </div>
           )}
@@ -72,7 +81,9 @@ export default function PickBadgeModal({ player, ...props }: Props) {
           SELECT BADGE
           <hr />
         </div>
-        <div style={{ display: "flex", flexDirection: "column", gap: "0.5em" }}>
+        <div
+          style={{ ...rowStyle, flexWrap: "wrap", justifyContent: "center" }}
+        >
           {items}
         </div>
       </div>
