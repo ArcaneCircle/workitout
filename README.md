@@ -70,6 +70,8 @@ git push origin v1.0.1
 
 - UI Icons from "Pixel Icon" by [HackerNoon](https://github.com/hackernoon/pixel-icon-library) ([CC BY 4.0](https://creativecommons.org/licenses/by/4.0/))
 
+- Badges from https://opengameart.org/content/m-tokens-minecraft-themed-icons (CC0 - public domain)
+
 - Level-up SFX is "VictorySmall.wav" from https://opengameart.org/content/8-bit-sound-fx (CC0 - public domain)
 
 - Click/select SFX is "vgmenuhighlight.ogg" from https://opengameart.org/content/8bit-menu-highlight (CC0 - public domain)
