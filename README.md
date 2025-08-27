@@ -4,7 +4,7 @@ Motivate your group to move: log reps in-chat, share progress,
 spark friendly challenges.
 
 WorkItOut turns your chat into a live, motivating workout feed.
-Instead of exercising alone, every push-up, squat, etc.  you
+Instead of exercising alone, every push-up, squat, etc. you
 log appears for the whole group, celebrating progress, fueling
 friendly competition, and building momentum together.
 

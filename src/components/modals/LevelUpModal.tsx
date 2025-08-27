@@ -26,9 +26,7 @@ export default function LevelUpModal({ level, ...props }: Props) {
           YOU LEVELED UP!
           <hr />
         </div>
-        <div style={{ paddingBottom: "0.4em" }}>
-          Now at level
-        </div>
+        <div style={{ paddingBottom: "0.4em" }}>Now at level</div>
         <div style={{ fontSize: "1.5em" }}>
           <PartyPopperStyled />
           <span style={{ paddingLeft: "0.2em", paddingRight: "0.2em" }}>
