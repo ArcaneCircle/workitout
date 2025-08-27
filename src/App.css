@@ -57,7 +57,8 @@ button * {
 
 .pixel-corners,
 .pixel-corners--wrapper {
-  clip-path: polygon(0px calc(100% - 2px),
+  clip-path: polygon(
+    0px calc(100% - 2px),
     2px calc(100% - 2px),
     2px 100%,
     calc(100% - 2px) 100%,
@@ -68,7 +69,8 @@ button * {
     calc(100% - 2px) 0px,
     2px 0px,
     2px 2px,
-    0px 2px);
+    0px 2px
+  );
   position: relative;
 }
 .pixel-corners {
@@ -80,7 +82,8 @@ button * {
 }
 .pixel-corners--wrapper .pixel-corners {
   display: block;
-  clip-path: polygon(4px 8px,
+  clip-path: polygon(
+    4px 8px,
     4px 6px,
     6px 6px,
     6px 4px,
@@ -99,13 +102,15 @@ button * {
     6px calc(100% - 4px),
     6px calc(100% - 6px),
     4px calc(100% - 6px),
-    4px calc(100% - 8px));
+    4px calc(100% - 8px)
+  );
 }
 .pixel-corners::after,
 .pixel-corners--wrapper::after {
   content: "";
   position: absolute;
-  clip-path: polygon(0px calc(100% - 2px),
+  clip-path: polygon(
+    0px calc(100% - 2px),
     2px calc(100% - 2px),
     2px 100%,
     calc(100% - 2px) 100%,
@@ -140,7 +145,8 @@ button * {
     4px calc(100% - 6px),
     4px calc(100% - 8px),
     4px 50%,
-    0px 50%);
+    0px 50%
+  );
   top: 0;
   bottom: 0;
   left: 0;
