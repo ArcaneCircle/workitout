@@ -6,7 +6,7 @@ import { levelUpSfx } from "~/lib/sounds";
 import ConfirmModal from "./ConfirmModal";
 
 const PartyPopperStyled = () => (
-  <PartyPopper style={{ height: "1.3em", width: "auto" }} />
+  <PartyPopper style={{ height: "1.2em", width: "auto" }} />
 );
 
 type Props = {
@@ -22,11 +22,11 @@ export default function LevelUpModal({ level, ...props }: Props) {
   return (
     <ConfirmModal {...props}>
       <div style={{ textAlign: "center" }}>
-        <div style={{ marginBottom: "2em" }}>
-          You Leveled Up!
+        <div style={{ marginBottom: "1.5em" }}>
+          YOU LEVELED UP!
           <hr />
         </div>
-        <div style={{ fontSize: "0.8em", paddingBottom: "0.4em" }}>
+        <div style={{ paddingBottom: "0.4em" }}>
           Now at level
         </div>
         <div style={{ fontSize: "1.5em" }}>
