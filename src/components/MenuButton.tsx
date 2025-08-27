@@ -1,4 +1,5 @@
 import { clickSfx } from "~/lib/sounds";
+import { GOAL_COLOR } from "~/lib/constants";
 
 interface Props {
   onClick: () => void;
@@ -11,7 +12,7 @@ export default function MenuButton({ onClick, children, ...props }: Props) {
     width: "100%",
     fontSize: "1em",
     color: "black",
-    backgroundColor: "white",
+    backgroundColor: GOAL_COLOR,
     cursor: "pointer",
     border: "none",
     padding: "0.4em 0.5em",

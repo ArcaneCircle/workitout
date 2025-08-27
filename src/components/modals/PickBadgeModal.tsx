@@ -53,7 +53,6 @@ export default function PickBadgeModal({ player, ...props }: Props) {
                 alignItems: "center",
                 gap: "0.2em",
                 cursor,
-                color: "#959595",
               }}
             >
               <PixelLockAltSolid style={{ width: "1em" }} />

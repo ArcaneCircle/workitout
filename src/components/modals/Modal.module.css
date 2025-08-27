@@ -1,6 +1,5 @@
 .modal {
-  background: black;
-  color: white;
+  background: #f0f0f0;
   border: none;
 }
 .modal::backdrop {
