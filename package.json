@@ -1,0 +1,28 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "vite --port 3000",
+    "fix": "prettier --write .",
+    "check": "tsc && prettier --check .",
+    "build": "vite build"
+  },
+  "devDependencies": {
+    "@iconify/json": "^2.2.351",
+    "@preact/preset-vite": "^2.10.1",
+    "@svgr/core": "^8.1.0",
+    "@svgr/plugin-jsx": "^8.1.0",
+    "@types/react": "^19.1.2",
+    "@webxdc/types": "latest",
+    "@webxdc/vite-plugins": "latest",
+    "prettier": "latest",
+    "typescript": "latest",
+    "unplugin-icons": "^22.1.0",
+    "vite": "latest"
+  },
+  "dependencies": {
+    "@fontsource/jersey-10": "^5.2.6",
+    "howler": "^2.2.4",
+    "preact": "^10.26.5"
+  }
+}
