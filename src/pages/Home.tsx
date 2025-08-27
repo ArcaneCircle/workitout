@@ -143,7 +143,7 @@ export default function Home({ player, scores }: Props) {
             onClick={onPlay}
           >
             <img
-              src="./icon.png"
+              src="./logo.png"
               style={{ height: "1em", width: "auto", verticalAlign: "middle" }}
             />{" "}
             Workout
