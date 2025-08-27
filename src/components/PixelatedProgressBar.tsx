@@ -5,7 +5,6 @@ const container = {
   overflow: "hidden" as "hidden",
   alignItems: "center",
   border: "2px solid #464646",
-  borderRadius: "5px",
   position: "relative" as "relative",
 };
 const row = {
@@ -62,7 +61,7 @@ export default function PixelatedProgressBar({
 
   props.style = { ...container, height, ...(props.style || {}) };
   return (
-    <div {...props}>
+    <div className="pixel-corners" {...props}>
       {label && <div style={labelStyle}>{label}</div>}
       <div style={progressStyle}></div>
       <div style={pixels}>

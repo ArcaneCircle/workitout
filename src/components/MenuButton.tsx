@@ -14,7 +14,6 @@ export default function MenuButton({ onClick, children, ...props }: Props) {
     backgroundColor: "white",
     cursor: "pointer",
     border: "none",
-    borderRadius: "5px",
     padding: "0.4em 0.5em",
   };
   props.style = { ...btnStyle, ...(props.style || {}) };
@@ -24,7 +23,7 @@ export default function MenuButton({ onClick, children, ...props }: Props) {
   };
 
   return (
-    <button onClick={clickWithSound} {...props}>
+    <button className="pixel-corners4" onClick={clickWithSound} {...props}>
       {children}
     </button>
   );

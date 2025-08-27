@@ -31,8 +31,6 @@ const months = [
 const card = {
   display: "flex",
   flexDirection: "column" as "column",
-  border: "1px solid #464646",
-  borderRadius: "5px",
   padding: "10px",
   background: "#f0f0f0",
 };
@@ -77,7 +75,7 @@ export default function Home({ player, scores }: Props) {
       </ModalContext.Provider>
 
       <div style={{ padding: "0.5em" }}>
-        <div style={{ ...card, marginBottom: "1em" }}>
+        <div className="pixel-corners" style={{ ...card, marginBottom: "1em" }}>
           <div
             style={{
               ...rowStyle,

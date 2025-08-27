@@ -36,7 +36,7 @@ export function Modal({ children, ...props }: Props) {
   }, [isOpen]);
 
   return (
-    <dialog ref={dialogRef} className={styles.modal}>
+    <dialog ref={dialogRef} className={"pixel-corners4 " + styles.modal}>
       <div ref={contentRef} {...props}>
         {children}
       </div>
