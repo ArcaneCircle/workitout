@@ -1,4 +1,4 @@
-# WorkItOut
+# <img src="./public/icon.png" width="32px"> WorkItOut
 
 Motivate your group to move — log reps in-chat, share progress,
 spark friendly challenges.
