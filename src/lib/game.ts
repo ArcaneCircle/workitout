@@ -165,6 +165,7 @@ function syncState() {
       uid: window.webxdc.selfAddr,
       status: state.status,
     },
+    href: "index.html", // don't merge info messages
     info,
   } as SendingStatusUpdate<Payload>;
 
