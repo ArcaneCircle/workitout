@@ -194,16 +194,23 @@ export default function Home({ player, scores }: Props) {
                       style={{
                         ...rowStyle,
                         flexDirection: "column",
+                        justifyContent: "center",
                         gap: "0",
                         overflow: "hidden",
                       }}
                     >
-                      <span
+                      <div
                         style={{ overflow: "hidden", textOverflow: "ellipsis" }}
                       >
                         {score.name}
-                      </span>
-                      <span style={{ opacity: "70%" }}>lvl.{score.lvl}</span>
+                      </div>
+                      <div style={{ fontSize: "0.9em", opacity: "70%" }}>
+                        lvl.{score.lvl}{" "}
+                        <PixelFireSolid
+                          style={{ width: "0.7em", height: "0.7em" }}
+                        />
+                        {score.streak}
+                      </div>
                     </div>
                   </div>
 
@@ -212,6 +219,7 @@ export default function Home({ player, scores }: Props) {
                       color: GOAL_COLOR,
                       alignSelf: "center",
                       flexShrink: "0",
+                      textShadow: "1px 1px 1px black",
                     }}
                   >
                     {score.score}
