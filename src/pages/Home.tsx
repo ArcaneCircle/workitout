@@ -90,7 +90,15 @@ export default function Home({ player, scores }: Props) {
               numberSize={streakSize}
               numberColor={streakColor}
               unit={player.streak === 1 ? "day" : "days"}
-              icon={<PixelFireSolid style={{ width: "1em", height: "1em", color: streakColor }} />}
+              icon={
+                <PixelFireSolid
+                  style={{
+                    width: "0.7em",
+                    height: "0.7em",
+                    color: streakColor,
+                  }}
+                />
+              }
             />
           </div>
           <div style={{ ...rowStyle }}>
