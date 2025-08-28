@@ -6,6 +6,13 @@ import ConfirmModal from "~/components/modals/ConfirmModal";
 import LevelUpModal from "~/components/modals/LevelUpModal";
 import MenuPreference from "~/components/MenuPreference";
 
+const rowStyle = {
+  display: "flex",
+  flexDirection: "row" as "row",
+  justifyContent: "space-between",
+  gap: "0.4em",
+};
+
 type Props = {
   [key: string]: any;
 };
@@ -170,17 +177,25 @@ function QuantitySelectionModal({
       <div style={{ display: "flex", flexDirection: "column", gap: "0.5em" }}>
         {kind === "jogging" || kind === "cycling" ? (
           <>
-            <MenuPreference name="1 km" state="" onClick={select1km} />
-            <MenuPreference name="2 km" state="" onClick={select2km} />
-            <MenuPreference name="5 km" state="" onClick={select5km} />
-            <MenuPreference name="10 km" state="" onClick={select10km} />
+            <div style={rowStyle}>
+              <MenuPreference name="1 km" state="" onClick={select1km} />
+              <MenuPreference name="2 km" state="" onClick={select2km} />
+            </div>
+            <div style={rowStyle}>
+              <MenuPreference name="5 km" state="" onClick={select5km} />
+              <MenuPreference name="10 km" state="" onClick={select10km} />
+            </div>
           </>
         ) : (
           <>
-            <MenuPreference name="x10" state="" onClick={select10} />
-            <MenuPreference name="x20" state="" onClick={select20} />
-            <MenuPreference name="x50" state="" onClick={select50} />
-            <MenuPreference name="x100" state="" onClick={select100} />
+            <div style={rowStyle}>
+              <MenuPreference name="x10" state="" onClick={select10} />
+              <MenuPreference name="x20" state="" onClick={select20} />
+            </div>
+            <div style={rowStyle}>
+              <MenuPreference name="x50" state="" onClick={select50} />
+              <MenuPreference name="x100" state="" onClick={select100} />
+            </div>
           </>
         )}
       </div>
