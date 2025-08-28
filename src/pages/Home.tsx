@@ -49,7 +49,7 @@ interface Props {
 
 export default function Home({ player, scores }: Props) {
   const [modal, setModal] = useState(null as "play" | "badge" | null);
-  const streakColor = player.today ? MAIN_COLOR : "#959595";
+  const streakColor = player.today ? GOAL_COLOR : "#959595";
   const streakSize = player.streak > 999 ? "0.9em" : undefined;
 
   const onBadgeClicked = useCallback(() => setModal("badge"), []);
@@ -83,14 +83,14 @@ export default function Home({ player, scores }: Props) {
               marginBottom: "0.5em",
             }}
           >
-            <StatSection title={"LVL"} number={player.lvl} />
+            <StatSection title={"LEVEL"} number={player.lvl} />
             <StatSection
               title={""}
               number={player.streak}
               numberSize={streakSize}
               numberColor={streakColor}
               unit={player.streak === 1 ? "day" : "days"}
-              icon={<PixelFireSolid style={{ color: streakColor }} />}
+              icon={<PixelFireSolid style={{ width: "1em", height: "1em", color: streakColor }} />}
             />
           </div>
           <div style={{ ...rowStyle }}>
@@ -135,17 +135,13 @@ export default function Home({ player, scores }: Props) {
             style={{
               fontSize: "1.2em",
               color: "white",
-              background: MAIN_COLOR,
+              background: GOAL_COLOR,
               padding: "0.5em 0.5em",
               marginTop: "1em",
               textShadow: "1px 1px 1px black",
             }}
             onClick={onPlay}
           >
-            <img
-              src="./logo.png"
-              style={{ height: "1em", width: "auto", verticalAlign: "middle" }}
-            />{" "}
             Workout
           </MenuButton>
         </div>
