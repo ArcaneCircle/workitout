@@ -1,18 +1,10 @@
 import { useState, useCallback, useContext } from "react";
 
-import { sendWorkout, importBackup, exportBackup } from "~/lib/game";
+import { importBackup, exportBackup } from "~/lib/game";
 
 import { ModalContext } from "~/components/modals/Modal";
 import ConfirmModal from "~/components/modals/ConfirmModal";
-import LevelUpModal from "~/components/modals/LevelUpModal";
 import MenuPreference from "~/components/MenuPreference";
-
-const rowStyle = {
-  display: "flex",
-  flexDirection: "row" as "row",
-  justifyContent: "space-between",
-  gap: "0.4em",
-};
 
 type Props = {
   [key: string]: any;
