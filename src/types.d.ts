@@ -36,3 +36,8 @@ declare type WorkoutType =
   | "jogging"
   | "jumps"
   | "cycling";
+
+declare interface Backup {
+  version: number;
+  status: Status;
+}

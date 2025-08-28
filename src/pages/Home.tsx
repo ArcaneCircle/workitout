@@ -3,12 +3,14 @@ import PixelFireSolid from "~icons/pixel/fire-solid";
 import PixelFlagCheckeredSolid from "~icons/pixel/flag-checkered-solid";
 import PixelSeedlingsSolid from "~icons/pixel/seedlings-solid";
 import PixelTrophySolid from "~icons/pixel/trophy-solid";
+import PixelCogSolid from "~icons/pixel/cog-solid";
 
 import { MAIN_COLOR, XP_COLOR, GOAL_COLOR } from "~/lib/constants";
 
 import { ModalContext } from "~/components/modals/Modal";
 import WorkoutModal from "~/components/modals/WorkoutModal";
 import PickBadgeModal from "~/components/modals/PickBadgeModal";
+import SettingsModal from "~/components/modals/SettingsModal";
 import PixelatedProgressBar from "~/components/PixelatedProgressBar";
 import StatSection from "~/components/StatSection";
 import MenuButton from "~/components/MenuButton";
@@ -48,12 +50,15 @@ interface Props {
 }
 
 export default function Home({ player, scores }: Props) {
-  const [modal, setModal] = useState(null as "play" | "badge" | null);
+  const [modal, setModal] = useState(
+    null as "play" | "badge" | "settings" | null,
+  );
   const streakColor = player.today ? GOAL_COLOR : "#959595";
   const streakSize = player.streak > 999 ? "0.9em" : undefined;
 
   const onBadgeClicked = useCallback(() => setModal("badge"), []);
   const onPlay = useCallback(() => setModal("play"), []);
+  const onSettings = useCallback(() => setModal("settings"), []);
   const setOpen = useCallback(
     (show: boolean) => (show ? setModal(modal) : setModal(null)),
     [modal],
@@ -71,6 +76,8 @@ export default function Home({ player, scores }: Props) {
           <WorkoutModal style={{ minWidth: "60vw" }} />
         ) : modal === "badge" ? (
           <PickBadgeModal player={player} style={{ minWidth: "60vw" }} />
+        ) : modal === "settings" ? (
+          <SettingsModal style={{ minWidth: "60vw" }} />
         ) : null}
       </ModalContext.Provider>
 
@@ -139,19 +146,32 @@ export default function Home({ player, scores }: Props) {
             </div>
           </div>
 
-          <MenuButton
-            style={{
-              fontSize: "1.2em",
-              color: "white",
-              background: GOAL_COLOR,
-              padding: "0.5em 0.5em",
-              marginTop: "1em",
-              textShadow: "1px 1px 1px black",
-            }}
-            onClick={onPlay}
-          >
-            Workout
-          </MenuButton>
+          <div style={{ ...rowStyle, marginTop: "1em" }}>
+            <MenuButton
+              style={{
+                fontSize: "1.2em",
+                color: "white",
+                background: GOAL_COLOR,
+                padding: "0.5em 0.5em",
+                textShadow: "1px 1px 1px black",
+              }}
+              onClick={onPlay}
+            >
+              Workout
+            </MenuButton>
+            <MenuButton
+              style={{
+                color: "white",
+                background: MAIN_COLOR,
+                padding: "0.5em 0.5em",
+                flexGrow: 0,
+                width: "initial",
+              }}
+              onClick={onSettings}
+            >
+              <PixelCogSolid style={{ verticalAlign: "middle" }} />
+            </MenuButton>
+          </div>
         </div>
 
         <div style={{ color: "white" }}>

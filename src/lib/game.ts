@@ -9,7 +9,8 @@ import {
   getScoreboard,
 } from "~/lib/storage";
 
-let state = {
+const VERSION = 1;
+const state = {
   saved: true,
   leveledUp: false,
   workouts: new Map<WorkoutType, number>(),
@@ -116,6 +117,29 @@ export async function initGame(
   setBoardState = boardHook;
   setPlayerState(getPlayer());
   setBoardState(getScoreboard());
+}
+
+export function exportBackup(): Backup {
+  return { version: VERSION, status: state.status };
+}
+
+export function importBackup(backup: Backup): boolean {
+  if (isValidBackup(backup)) {
+    const uid = window.webxdc.selfAddr;
+    backup.status.name = window.webxdc.selfName;
+    window.webxdc.sendUpdate(
+      {
+        payload: { uid, status: backup.status },
+      },
+      "",
+    );
+    return true;
+  }
+  return false;
+}
+
+function isValidBackup(backup: Backup) {
+  return "status" in backup && "version" in backup && backup.version <= VERSION;
 }
 
 function syncState() {
