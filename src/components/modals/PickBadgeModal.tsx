@@ -1,7 +1,7 @@
 import { useMemo, useContext } from "react";
 import PixelLockAltSolid from "~icons/pixel/lock-alt-solid";
 
-import { BADGE_COUNT } from "~/lib/constants";
+import { BADGE_COUNT, GOLDEN_COLOR, GRAY_COLOR } from "~/lib/constants";
 import { setBadge } from "~/lib/game";
 import { clickSfx } from "~/lib/sounds";
 
@@ -18,6 +18,11 @@ const rowStyle = {
 const imgStyle = {
   width: "2.8em",
   height: "auto",
+};
+
+const labelStyle = {
+  margin: "0.2em 0 0 0",
+  border: "none",
 };
 
 type Props = {
@@ -54,18 +59,29 @@ export default function PickBadgeModal({ player, ...props }: Props) {
         >
           <img style={{ ...imgStyle, cursor }} src={`./badges/${i}.png`} />
           {unlocked ? (
-            <div style={{ cursor }}>#0{n < 10 ? "0" + n : n}</div>
+            <div
+              className="pixel-corners"
+              style={{
+                ...labelStyle,
+                cursor,
+                padding: "0 0.2em",
+                background: player.badge === i ? GOLDEN_COLOR : GRAY_COLOR,
+              }}
+            >
+              #0{n < 10 ? "0" + n : n}
+            </div>
           ) : (
             <div
               style={{
+                ...labelStyle,
                 display: "flex",
                 alignItems: "center",
-                gap: "0.2em",
+                gap: "0.1em",
                 cursor,
               }}
             >
-              <PixelLockAltSolid style={{ width: "0.7em" }} />
-              <span>lvl {i >= 55 ? 100 : Math.floor(i / 5) * 10}</span>
+              <PixelLockAltSolid width="0.7em" height="0.7em" />
+              <span>lvl.{i >= 55 ? 100 : Math.floor(i / 5) * 10}</span>
             </div>
           )}
         </div>,

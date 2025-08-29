@@ -5,7 +5,8 @@ import PixelSeedlingsSolid from "~icons/pixel/seedlings-solid";
 import PixelTrophySolid from "~icons/pixel/trophy-solid";
 import PixelCogSolid from "~icons/pixel/cog-solid";
 
-import { MAIN_COLOR, XP_COLOR, GOAL_COLOR } from "~/lib/constants";
+import { MAIN_COLOR, GOLDEN_COLOR, GRAY_COLOR } from "~/lib/constants";
+import { clickSfx } from "~/lib/sounds";
 
 import { ModalContext } from "~/components/modals/Modal";
 import WorkoutModal from "~/components/modals/WorkoutModal";
@@ -53,10 +54,13 @@ export default function Home({ player, scores }: Props) {
   const [modal, setModal] = useState(
     null as "play" | "badge" | "settings" | null,
   );
-  const streakColor = player.today ? GOAL_COLOR : "#959595";
+  const streakColor = player.today ? GOLDEN_COLOR : "#959595";
   const streakSize = player.streak > 999 ? "0.9em" : undefined;
 
-  const onBadgeClicked = useCallback(() => setModal("badge"), []);
+  const onBadgeClicked = useCallback(() => {
+    clickSfx.play();
+    setModal("badge");
+  }, []);
   const onPlay = useCallback(() => setModal("play"), []);
   const onSettings = useCallback(() => setModal("settings"), []);
   const setOpen = useCallback(
@@ -65,7 +69,9 @@ export default function Home({ player, scores }: Props) {
   );
 
   const trophy = (
-    <PixelTrophySolid style={{ verticalAlign: "middle", color: GOAL_COLOR }} />
+    <PixelTrophySolid
+      style={{ verticalAlign: "middle", color: GOLDEN_COLOR }}
+    />
   );
   const month = months[new Date().getMonth()];
 
@@ -124,11 +130,11 @@ export default function Home({ player, scores }: Props) {
                 <PixelatedProgressBar
                   progress={player.totalXp ? player.xp : 100}
                   total={player.totalXp || 100}
-                  color={XP_COLOR}
+                  color={MAIN_COLOR}
                   label={
                     player.totalXp ? `${player.xp}/${player.totalXp}` : "MAX"
                   }
-                  style={{ flexGrow: 1, background: "#d9d9d9" }}
+                  style={{ flexGrow: 1, background: GRAY_COLOR }}
                 />
                 <PixelSeedlingsSolid />
               </div>
@@ -137,9 +143,9 @@ export default function Home({ player, scores }: Props) {
                 <PixelatedProgressBar
                   progress={player.today}
                   total={player.record}
-                  color={GOAL_COLOR}
+                  color={GOLDEN_COLOR}
                   label={`${player.today}/${player.record}`}
-                  style={{ flexGrow: 1, background: "#d9d9d9" }}
+                  style={{ flexGrow: 1, background: GRAY_COLOR }}
                 />
                 <PixelFlagCheckeredSolid />
               </div>
@@ -151,7 +157,7 @@ export default function Home({ player, scores }: Props) {
               style={{
                 fontSize: "1.2em",
                 color: "white",
-                background: GOAL_COLOR,
+                background: GOLDEN_COLOR,
                 padding: "0.5em 0.5em",
                 textShadow: "1px 1px 1px black",
               }}
@@ -206,7 +212,7 @@ export default function Home({ player, scores }: Props) {
                   >
                     <span
                       style={{
-                        color: GOAL_COLOR,
+                        color: GOLDEN_COLOR,
                         alignSelf: "end",
                         flexShrink: "0",
                         minWidth: "0.6em",
@@ -244,7 +250,7 @@ export default function Home({ player, scores }: Props) {
 
                   <span
                     style={{
-                      color: GOAL_COLOR,
+                      color: GOLDEN_COLOR,
                       alignSelf: "center",
                       flexShrink: "0",
                       textShadow: "1px 1px 1px black",
