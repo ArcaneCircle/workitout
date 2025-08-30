@@ -29,12 +29,16 @@ declare interface Score {
 declare type WorkoutType =
   | "push-ups"
   | "pull-ups"
+  | "muscle-ups"
   | "abs"
   | "squats"
   | "dips"
   | "curls"
-  | "jogging"
+  | "rows"
+  | "inverted rows"
   | "jumps"
+  | "walking"
+  | "jogging"
   | "cycling";
 
 declare interface Backup {

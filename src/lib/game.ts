@@ -1,6 +1,12 @@
 import { ReceivedStatusUpdate, SendingStatusUpdate } from "@webxdc/types";
 
-import { MAX_LEVEL } from "~/lib/constants";
+import {
+  MAX_LEVEL,
+  MUSCLEUP_SCORE,
+  JOGGING_SCORE,
+  CYCLING_SCORE,
+  WALKING_SCORE,
+} from "~/lib/constants";
 import {
   getStatus,
   setStatus,
@@ -148,9 +154,13 @@ function syncState() {
   const workouts = [];
   for (const [kind, xp] of state.workouts) {
     if (kind === "jogging") {
-      workouts.push(`a ${xp / 100} km jog`);
+      workouts.push(`a ${xp / JOGGING_SCORE} km jog`);
+    } else if (kind === "walking") {
+      workouts.push(`a ${xp / WALKING_SCORE} km walk`);
     } else if (kind === "cycling") {
-      workouts.push(`${xp / 50} km of cycling`);
+      workouts.push(`${xp / CYCLING_SCORE} km of cycling`);
+    } else if (kind === "muscle-ups") {
+      workouts.push(`${xp / MUSCLEUP_SCORE} ${kind}`);
     } else {
       workouts.push(`${xp} ${kind}`);
     }
