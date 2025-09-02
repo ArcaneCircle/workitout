@@ -6,6 +6,9 @@ import {
   JOGGING_SCORE,
   CYCLING_SCORE,
   WALKING_SCORE,
+  PLANK_SCORE,
+  HOLLOW_HOLD_SCORE,
+  STRETCHING_SCORE,
 } from "~/lib/constants";
 import {
   getStatus,
@@ -14,6 +17,7 @@ import {
   getMaxSerial,
   getScoreboard,
 } from "~/lib/storage";
+import { seconds2label } from "~/lib/util";
 
 const VERSION = 1;
 const state = {
@@ -161,6 +165,15 @@ function syncState() {
       workouts.push(`${xp / CYCLING_SCORE} km of cycling`);
     } else if (kind === "muscle-ups") {
       workouts.push(`${xp / MUSCLEUP_SCORE} ${kind}`);
+    } else if (kind === "plank") {
+      const time = seconds2label((xp / PLANK_SCORE) * 5);
+      workouts.push(`${time} ${kind}`);
+    } else if (kind === "hollow hold") {
+      const time = seconds2label((xp / HOLLOW_HOLD_SCORE) * 5);
+      workouts.push(`${time} ${kind}`);
+    } else if (kind === "stretching") {
+      const time = seconds2label((xp / STRETCHING_SCORE) * 5);
+      workouts.push(`${time} of ${kind}`);
     } else {
       workouts.push(`${xp} ${kind}`);
     }

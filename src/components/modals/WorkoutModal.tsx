@@ -1,12 +1,16 @@
 import { useState, useMemo } from "react";
 
-import { sendWorkout } from "~/lib/game";
 import {
   MUSCLEUP_SCORE,
   JOGGING_SCORE,
   CYCLING_SCORE,
   WALKING_SCORE,
+  PLANK_SCORE,
+  HOLLOW_HOLD_SCORE,
+  STRETCHING_SCORE,
 } from "~/lib/constants";
+import { sendWorkout } from "~/lib/game";
+import { seconds2label } from "~/lib/util";
 
 import ConfirmModal from "~/components/modals/ConfirmModal";
 import LevelUpModal from "~/components/modals/LevelUpModal";
@@ -23,6 +27,9 @@ const workouts: WorkoutType[] = [
   "rows",
   "inverted rows",
   "jumps",
+  "plank",
+  "hollow hold",
+  "stretching",
   "walking",
   "jogging",
   "cycling",
@@ -95,6 +102,8 @@ function QuantitySelectionModal({
   const items = useMemo(() => {
     const distance =
       kind === "jogging" || kind === "cycling" || kind === "walking";
+    const timeBased =
+      kind === "plank" || kind === "hollow hold" || kind === "stretching";
     return distance
       ? [1, 2, 5, 10, 20, 40].map((amount) => {
           const onClick = () => {
@@ -120,22 +129,47 @@ function QuantitySelectionModal({
             />
           );
         })
-      : [1, 5, 10, 20, 50, 100].map((amount) => {
-          const onClick = () => {
-            const newLevel = sendWorkout(
-              kind,
-              kind === "muscle-ups" ? amount * MUSCLEUP_SCORE : amount,
+      : timeBased
+        ? [15, 30, 45, 60, 300, 600].map((amount) => {
+            const onClick = () => {
+              const multiplier =
+                kind === "plank"
+                  ? PLANK_SCORE
+                  : kind === "hollow hold"
+                    ? HOLLOW_HOLD_SCORE
+                    : STRETCHING_SCORE;
+              const newLevel = sendWorkout(kind, (amount / 5) * multiplier);
+              if (newLevel) {
+                setModal({ levelUp: newLevel });
+              } else {
+                setModal({ workout: true });
+              }
+            };
+            return (
+              <MenuPreference
+                style={{ textWrap: "nowrap" }}
+                name={seconds2label(amount)}
+                state=""
+                onClick={onClick}
+              />
             );
-            if (newLevel) {
-              setModal({ levelUp: newLevel });
-            } else {
-              setModal({ workout: true });
-            }
-          };
-          return (
-            <MenuPreference name={`x${amount}`} state="" onClick={onClick} />
-          );
-        });
+          })
+        : [1, 5, 10, 20, 50, 100].map((amount) => {
+            const onClick = () => {
+              const newLevel = sendWorkout(
+                kind,
+                kind === "muscle-ups" ? amount * MUSCLEUP_SCORE : amount,
+              );
+              if (newLevel) {
+                setModal({ levelUp: newLevel });
+              } else {
+                setModal({ workout: true });
+              }
+            };
+            return (
+              <MenuPreference name={`x${amount}`} state="" onClick={onClick} />
+            );
+          });
   }, [kind, setModal]);
 
   return (

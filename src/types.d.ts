@@ -37,6 +37,9 @@ declare type WorkoutType =
   | "rows"
   | "inverted rows"
   | "jumps"
+  | "plank"
+  | "hollow hold"
+  | "stretching"
   | "walking"
   | "jogging"
   | "cycling";
