@@ -9,6 +9,8 @@ import {
   PLANK_SCORE,
   HOLLOW_HOLD_SCORE,
   STRETCHING_SCORE,
+  HANDSTAND_SCORE,
+  LSIT_SCORE,
 } from "~/lib/constants";
 import {
   getStatus,
@@ -174,6 +176,12 @@ function syncState() {
     } else if (kind === "stretching") {
       const time = seconds2label((xp / STRETCHING_SCORE) * 5);
       workouts.push(`${time} of ${kind}`);
+    } else if (kind === "handstand") {
+      const time = seconds2label((xp / HANDSTAND_SCORE) * 5);
+      workouts.push(`${time} ${kind}`);
+    } else if (kind === "L-sit") {
+      const time = seconds2label((xp / LSIT_SCORE) * 5);
+      workouts.push(`${time} ${kind}`);
     } else {
       workouts.push(`${xp} ${kind}`);
     }

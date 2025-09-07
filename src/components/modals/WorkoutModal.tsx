@@ -8,6 +8,8 @@ import {
   PLANK_SCORE,
   HOLLOW_HOLD_SCORE,
   STRETCHING_SCORE,
+  HANDSTAND_SCORE,
+  LSIT_SCORE,
 } from "~/lib/constants";
 import { sendWorkout } from "~/lib/game";
 import { seconds2label } from "~/lib/util";
@@ -16,19 +18,41 @@ import ConfirmModal from "~/components/modals/ConfirmModal";
 import LevelUpModal from "~/components/modals/LevelUpModal";
 import MenuPreference from "~/components/MenuPreference";
 
+const distanceBasedWorkouts: WorkoutType[] = ["jogging", "cycling", "walking"];
+const timeBasedWorkouts: WorkoutType[] = [
+  "plank",
+  "hollow hold",
+  "stretching",
+  "handstand",
+  "L-sit",
+];
 const workouts: WorkoutType[] = [
   "push-ups",
   "pull-ups",
+  "chin-ups",
   "muscle-ups",
-  "abs",
+  "reverse muscle-ups",
+  "sit-ups",
+  "curl-ups",
+  "bicycle crunches",
+  "hanging knee raises",
+  "leg raises",
   "squats",
+  "squat thrusts",
+  "burpees",
+  "calf raises",
+  "lunges",
   "dips",
-  "curls",
+  "bicep curls",
   "rows",
   "inverted rows",
   "jumps",
+  "box jumps",
+  "jumping jacks",
   "plank",
   "hollow hold",
+  "handstand",
+  "L-sit",
   "stretching",
   "walking",
   "jogging",
@@ -100,10 +124,8 @@ function QuantitySelectionModal({
   setModal: (modal: ModalType) => void;
 }) {
   const items = useMemo(() => {
-    const distance =
-      kind === "jogging" || kind === "cycling" || kind === "walking";
-    const timeBased =
-      kind === "plank" || kind === "hollow hold" || kind === "stretching";
+    const distance = distanceBasedWorkouts.indexOf(kind) >= 0;
+    const timeBased = timeBasedWorkouts.indexOf(kind) >= 0;
     return distance
       ? [1, 2, 5, 10, 20, 40].map((amount) => {
           const onClick = () => {
@@ -137,7 +159,11 @@ function QuantitySelectionModal({
                   ? PLANK_SCORE
                   : kind === "hollow hold"
                     ? HOLLOW_HOLD_SCORE
-                    : STRETCHING_SCORE;
+                    : kind === "stretching"
+                      ? STRETCHING_SCORE
+                      : kind === "handstand"
+                        ? HANDSTAND_SCORE
+                        : LSIT_SCORE;
               const newLevel = sendWorkout(kind, (amount / 5) * multiplier);
               if (newLevel) {
                 setModal({ levelUp: newLevel });
