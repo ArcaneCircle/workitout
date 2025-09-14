@@ -8,6 +8,7 @@ import {
   WALKING_SCORE,
   PLANK_SCORE,
   HOLLOW_HOLD_SCORE,
+  SUPERMAN_SCORE,
   STRETCHING_SCORE,
   HANDSTAND_SCORE,
   LSIT_SCORE,
@@ -83,6 +84,9 @@ export function sendWorkout(kind: WorkoutType, amount: number): number {
       break;
     case "hollow hold":
       xp = (amount / 5) * HOLLOW_HOLD_SCORE;
+      break;
+    case "superman hold":
+      xp = (amount / 5) * SUPERMAN_SCORE;
       break;
     case "stretching":
       xp = (amount / 5) * STRETCHING_SCORE;
@@ -205,6 +209,9 @@ function syncState() {
       workouts.push(`${time} ${kind}`);
     } else if (kind === "hollow hold") {
       const time = seconds2label((xp / HOLLOW_HOLD_SCORE) * 5);
+      workouts.push(`${time} ${kind}`);
+    } else if (kind === "superman hold") {
+      const time = seconds2label((xp / SUPERMAN_SCORE) * 5);
       workouts.push(`${time} ${kind}`);
     } else if (kind === "stretching") {
       const time = seconds2label((xp / STRETCHING_SCORE) * 5);

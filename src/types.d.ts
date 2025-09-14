@@ -51,6 +51,7 @@ declare type WorkoutType =
   | "jumping jacks"
   | "plank"
   | "hollow hold"
+  | "superman hold"
   | "stretching"
   | "handstand"
   | "L-sit"

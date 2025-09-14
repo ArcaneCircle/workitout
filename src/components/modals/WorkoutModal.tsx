@@ -11,6 +11,7 @@ const distanceBasedWorkouts: WorkoutType[] = ["jogging", "cycling", "walking"];
 const timeBasedWorkouts: WorkoutType[] = [
   "plank",
   "hollow hold",
+  "superman hold",
   "stretching",
   "handstand",
   "L-sit",
@@ -40,6 +41,7 @@ const workouts: WorkoutType[] = [
   "jumping jacks",
   "plank",
   "hollow hold",
+  "superman hold",
   "handstand",
   "L-sit",
   "stretching",
