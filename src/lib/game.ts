@@ -6,6 +6,7 @@ import {
   JOGGING_SCORE,
   CYCLING_SCORE,
   WALKING_SCORE,
+  SPRINT_SCORE,
   PLANK_SCORE,
   SIDE_PLANK_SCORE,
   HOLLOW_HOLD_SCORE,
@@ -73,6 +74,9 @@ export function sendWorkout(kind: WorkoutType, amount: number): number {
       break;
     case "jogging":
       xp = amount * JOGGING_SCORE;
+      break;
+    case "sprint":
+      xp = amount * SPRINT_SCORE;
       break;
     case "cycling":
       xp = amount * CYCLING_SCORE;
@@ -202,6 +206,8 @@ function syncState() {
   for (const [kind, xp] of state.workouts) {
     if (kind === "jogging") {
       workouts.push(`a ${xp / JOGGING_SCORE} km jog`);
+    } else if (kind === "sprint") {
+      workouts.push(`a ${xp / SPRINT_SCORE} km sprint`);
     } else if (kind === "walking") {
       workouts.push(`a ${xp / WALKING_SCORE} km walk`);
     } else if (kind === "cycling") {

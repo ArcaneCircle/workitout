@@ -58,6 +58,7 @@ declare type WorkoutType =
   | "L-sit"
   | "walking"
   | "jogging"
+  | "sprint"
   | "cycling";
 
 declare interface Backup {

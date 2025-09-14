@@ -7,7 +7,12 @@ import ConfirmModal from "~/components/modals/ConfirmModal";
 import LevelUpModal from "~/components/modals/LevelUpModal";
 import MenuPreference from "~/components/MenuPreference";
 
-const distanceBasedWorkouts: WorkoutType[] = ["jogging", "cycling", "walking"];
+const distanceBasedWorkouts: WorkoutType[] = [
+  "jogging",
+  "cycling",
+  "walking",
+  "sprint",
+];
 const timeBasedWorkouts: WorkoutType[] = [
   "plank",
   "side plank",
@@ -49,6 +54,7 @@ const workouts: WorkoutType[] = [
   "stretching",
   "walking",
   "jogging",
+  "sprint",
   "cycling",
 ];
 
