@@ -1,16 +1,5 @@
 import { useState, useMemo } from "react";
 
-import {
-  MUSCLEUP_SCORE,
-  JOGGING_SCORE,
-  CYCLING_SCORE,
-  WALKING_SCORE,
-  PLANK_SCORE,
-  HOLLOW_HOLD_SCORE,
-  STRETCHING_SCORE,
-  HANDSTAND_SCORE,
-  LSIT_SCORE,
-} from "~/lib/constants";
 import { sendWorkout } from "~/lib/game";
 import { seconds2label } from "~/lib/util";
 
@@ -129,13 +118,7 @@ function QuantitySelectionModal({
     return distance
       ? [1, 2, 5, 10, 20, 40].map((amount) => {
           const onClick = () => {
-            const multiplier =
-              kind === "jogging"
-                ? JOGGING_SCORE
-                : kind === "cycling"
-                  ? CYCLING_SCORE
-                  : WALKING_SCORE;
-            const newLevel = sendWorkout(kind, amount * multiplier);
+            const newLevel = sendWorkout(kind, amount);
             if (newLevel) {
               setModal({ levelUp: newLevel });
             } else {
@@ -154,17 +137,7 @@ function QuantitySelectionModal({
       : timeBased
         ? [15, 30, 45, 60, 300, 600].map((amount) => {
             const onClick = () => {
-              const multiplier =
-                kind === "plank"
-                  ? PLANK_SCORE
-                  : kind === "hollow hold"
-                    ? HOLLOW_HOLD_SCORE
-                    : kind === "stretching"
-                      ? STRETCHING_SCORE
-                      : kind === "handstand"
-                        ? HANDSTAND_SCORE
-                        : LSIT_SCORE;
-              const newLevel = sendWorkout(kind, (amount / 5) * multiplier);
+              const newLevel = sendWorkout(kind, amount);
               if (newLevel) {
                 setModal({ levelUp: newLevel });
               } else {
@@ -182,10 +155,7 @@ function QuantitySelectionModal({
           })
         : [1, 5, 10, 20, 50, 100].map((amount) => {
             const onClick = () => {
-              const newLevel = sendWorkout(
-                kind,
-                kind === "muscle-ups" ? amount * MUSCLEUP_SCORE : amount,
-              );
+              const newLevel = sendWorkout(kind, amount);
               if (newLevel) {
                 setModal({ levelUp: newLevel });
               } else {

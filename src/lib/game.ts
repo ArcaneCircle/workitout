@@ -63,7 +63,40 @@ export function setBadge(badge: number) {
   }
 }
 
-export function sendWorkout(kind: WorkoutType, xp: number): number {
+export function sendWorkout(kind: WorkoutType, amount: number): number {
+  let xp;
+  switch (kind) {
+    case "muscle-ups":
+      xp = amount * MUSCLEUP_SCORE;
+      break;
+    case "jogging":
+      xp = amount * JOGGING_SCORE;
+      break;
+    case "cycling":
+      xp = amount * CYCLING_SCORE;
+      break;
+    case "walking":
+      xp = amount * WALKING_SCORE;
+      break;
+    case "plank":
+      xp = (amount / 5) * PLANK_SCORE;
+      break;
+    case "hollow hold":
+      xp = (amount / 5) * HOLLOW_HOLD_SCORE;
+      break;
+    case "stretching":
+      xp = (amount / 5) * STRETCHING_SCORE;
+      break;
+    case "handstand":
+      xp = (amount / 5) * HANDSTAND_SCORE;
+      break;
+    case "L-sit":
+      xp = (amount / 5) * LSIT_SCORE;
+      break;
+    default:
+      xp = amount;
+  }
+
   const oldStatus = state.status;
   const { xp: newXp, level: newLevel } = increaseXp(oldStatus, xp);
 
