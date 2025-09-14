@@ -7,6 +7,7 @@ import {
   CYCLING_SCORE,
   WALKING_SCORE,
   PLANK_SCORE,
+  SIDE_PLANK_SCORE,
   HOLLOW_HOLD_SCORE,
   SUPERMAN_SCORE,
   STRETCHING_SCORE,
@@ -81,6 +82,9 @@ export function sendWorkout(kind: WorkoutType, amount: number): number {
       break;
     case "plank":
       xp = (amount / 5) * PLANK_SCORE;
+      break;
+    case "side plank":
+      xp = (amount / 5) * SIDE_PLANK_SCORE;
       break;
     case "hollow hold":
       xp = (amount / 5) * HOLLOW_HOLD_SCORE;
@@ -206,6 +210,9 @@ function syncState() {
       workouts.push(`${xp / MUSCLEUP_SCORE} ${kind}`);
     } else if (kind === "plank") {
       const time = seconds2label((xp / PLANK_SCORE) * 5);
+      workouts.push(`${time} ${kind}`);
+    } else if (kind === "side plank") {
+      const time = seconds2label((xp / SIDE_PLANK_SCORE) * 5);
       workouts.push(`${time} ${kind}`);
     } else if (kind === "hollow hold") {
       const time = seconds2label((xp / HOLLOW_HOLD_SCORE) * 5);

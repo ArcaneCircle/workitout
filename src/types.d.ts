@@ -50,6 +50,7 @@ declare type WorkoutType =
   | "box jumps"
   | "jumping jacks"
   | "plank"
+  | "side plank"
   | "hollow hold"
   | "superman hold"
   | "stretching"

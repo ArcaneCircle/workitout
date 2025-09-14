@@ -10,6 +10,7 @@ import MenuPreference from "~/components/MenuPreference";
 const distanceBasedWorkouts: WorkoutType[] = ["jogging", "cycling", "walking"];
 const timeBasedWorkouts: WorkoutType[] = [
   "plank",
+  "side plank",
   "hollow hold",
   "superman hold",
   "stretching",
@@ -40,6 +41,7 @@ const workouts: WorkoutType[] = [
   "box jumps",
   "jumping jacks",
   "plank",
+  "side plank",
   "hollow hold",
   "superman hold",
   "handstand",
