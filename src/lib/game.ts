@@ -2,6 +2,8 @@ import { ReceivedStatusUpdate, SendingStatusUpdate } from "@webxdc/types";
 
 import {
   MAX_LEVEL,
+  BURPEES_SCORE,
+  SQUAT_THRUSTS_SCORE,
   MUSCLEUP_SCORE,
   JOGGING_SCORE,
   CYCLING_SCORE,
@@ -69,6 +71,12 @@ export function setBadge(badge: number) {
 export function sendWorkout(kind: WorkoutType, amount: number): number {
   let xp;
   switch (kind) {
+    case "burpees":
+      xp = amount * BURPEES_SCORE;
+      break;
+    case "squat thrusts":
+      xp = amount * SQUAT_THRUSTS_SCORE;
+      break;
     case "muscle-ups":
       xp = amount * MUSCLEUP_SCORE;
       break;
@@ -212,6 +220,10 @@ function syncState() {
       workouts.push(`a ${xp / WALKING_SCORE} km walk`);
     } else if (kind === "cycling") {
       workouts.push(`${xp / CYCLING_SCORE} km of cycling`);
+    } else if (kind === "burpees") {
+      workouts.push(`${xp / BURPEES_SCORE} ${kind}`);
+    } else if (kind === "squat thrusts") {
+      workouts.push(`${xp / SQUAT_THRUSTS_SCORE} ${kind}`);
     } else if (kind === "muscle-ups") {
       workouts.push(`${xp / MUSCLEUP_SCORE} ${kind}`);
     } else if (kind === "plank") {
