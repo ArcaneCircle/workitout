@@ -6,6 +6,8 @@ import { ModalContext } from "~/components/modals/Modal";
 import ConfirmModal from "~/components/modals/ConfirmModal";
 import MenuPreference from "~/components/MenuPreference";
 
+import styles from "./SettingsModal.module.css";
+
 type Props = {
   [key: string]: any;
 };
@@ -14,7 +16,9 @@ type ModalType = "default" | "credits" | "import-error";
 
 export default function SettingsModal(props: Props) {
   const [modal, setModal] = useState<ModalType>("default");
-  //props["buttonText"] = "Cancel";
+  let buttonText = modal === "default" ? "Cancel" : props["buttonText"];
+  props = { ...props, buttonText };
+
   return (
     <ConfirmModal {...props}>
       {modal === "credits" ? (
@@ -75,10 +79,13 @@ function MenuModal({ setModal }: { setModal: (modal: ModalType) => void }) {
 }
 
 function CreditsModal() {
+  const repo = "github.com/ArcaneCircle/workitout";
+
   return (
     <div style={{ textAlign: "center" }}>
       <div style={{ marginBottom: "1em" }}>
         <img
+          className={styles.jump}
           src="./logo.png"
           style={{ height: "2.5em", width: "auto", verticalAlign: "middle" }}
         />
@@ -104,7 +111,13 @@ function CreditsModal() {
         <p>
           More details at:
           <br />
-          github.com/ArcaneCircle/workitout
+          <a
+            href={`https://${repo}`}
+            target="_blank"
+            style={{ cursor: "pointer" }}
+          >
+            {repo}
+          </a>
         </p>
       </div>
     </div>

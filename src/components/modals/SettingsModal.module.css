@@ -1,0 +1,44 @@
+@keyframes jump {
+  /* -------- idle -------- */
+  0%,
+  35% {
+    /* first 35% of the cycle – do nothing */
+    transform: translateY(0) scale(1, 1);
+  }
+
+  /* -------- first hop (quick) -------- */
+  40% {
+    transform: translateY(-10px) scale(1.3, 0.85);
+  } /* up + a tiny vertical squash */
+  45% {
+    transform: translateY(0) scale(1, 1);
+  } /* back to normal */
+
+  /* -------- idle again -------- */
+  46%,
+  75% {
+    /* stay still for a while */
+    transform: translateY(0) scale(1, 1);
+  }
+
+  /* -------- second, slightly softer hop -------- */
+  80% {
+    transform: translateY(-10px) scale(1.2, 0.9);
+  }
+  85% {
+    transform: translateY(0) scale(1, 1);
+  }
+
+  /* -------- final idle until the next cycle -------- */
+  86%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+}
+
+.jump {
+  display: inline-block; /* needed for transform */
+  animation: jump 4s infinite;
+  /* Optional – make the “bounce” feel snappier */
+  animation-timing-function: cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
