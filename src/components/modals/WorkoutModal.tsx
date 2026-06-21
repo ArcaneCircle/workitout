@@ -107,7 +107,7 @@ function WorkoutSelectionModal({
           name={kind}
           state=""
           onClick={onClick}
-          style={{...btnStyle, textAlign: "start"}}
+          style={{ ...btnStyle, textAlign: "start" }}
         />
       );
     });
