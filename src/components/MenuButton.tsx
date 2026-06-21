@@ -15,7 +15,7 @@ export default function MenuButton({ onClick, children, ...props }: Props) {
     backgroundColor: GOLDEN_COLOR,
     cursor: "pointer",
     border: "none",
-    padding: "0.4em 0.5em",
+    padding: "0.5em",
   };
   props.style = { ...btnStyle, ...(props.style || {}) };
   const clickWithSound = () => {

@@ -65,6 +65,10 @@ const rowStyle = {
   gap: "0.4em",
 };
 
+const btnStyle = {
+  padding: "0.8em 0.5em",
+};
+
 type Props = {
   [key: string]: any;
 };
@@ -98,9 +102,22 @@ function WorkoutSelectionModal({
   const items = useMemo(() => {
     return workouts.map((kind) => {
       const onClick = () => setModal({ selected: kind });
-      return <MenuPreference name={kind} state="" onClick={onClick} />;
+      return (
+        <MenuPreference
+          name={kind}
+          state=""
+          onClick={onClick}
+          style={{...btnStyle, textAlign: "start"}}
+        />
+      );
     });
   }, [setModal]);
+
+  const divStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(2, 1fr)",
+    gap: "0.5rem",
+  };
 
   return (
     <div style={{ textAlign: "center" }}>
@@ -108,9 +125,7 @@ function WorkoutSelectionModal({
         SELECT WORKOUT
         <hr />
       </div>
-      <div style={{ display: "flex", flexDirection: "column", gap: "0.5em" }}>
-        {items}
-      </div>
+      <div style={divStyle}>{items}</div>
     </div>
   );
 }
@@ -137,7 +152,7 @@ function QuantitySelectionModal({
           };
           return (
             <MenuPreference
-              style={{ textWrap: "nowrap" }}
+              style={{ ...btnStyle, textWrap: "nowrap" }}
               name={`${amount} km`}
               state=""
               onClick={onClick}
@@ -156,7 +171,7 @@ function QuantitySelectionModal({
             };
             return (
               <MenuPreference
-                style={{ textWrap: "nowrap" }}
+                style={{ ...btnStyle, textWrap: "nowrap" }}
                 name={seconds2label(amount)}
                 state=""
                 onClick={onClick}
@@ -173,7 +188,12 @@ function QuantitySelectionModal({
               }
             };
             return (
-              <MenuPreference name={`x${amount}`} state="" onClick={onClick} />
+              <MenuPreference
+                name={`x${amount}`}
+                state=""
+                onClick={onClick}
+                style={btnStyle}
+              />
             );
           });
   }, [kind, setModal]);
